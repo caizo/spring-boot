@@ -1,0 +1,22 @@
+version: "3.7"
+services:
+  sringboot-app:
+    container_name: spring_app_compose
+    image: spring-boot-docker
+    restart: always
+    build: .
+    ports:
+      - "8081:8081"
+    environment:
+      MYSQL_HOST: mysqldb_compose
+
+  mysqldb:
+    container_name: mysqldb_compose
+    image: mysql
+    volumes:
+      - "C:/db_compose:/var/lib/mysql"
+    ports:
+      - "3308:3306"
+    environment:
+      MYSQL_DATABASE: testdb
+      MYSQL_ROOT_PASSWORD: test
