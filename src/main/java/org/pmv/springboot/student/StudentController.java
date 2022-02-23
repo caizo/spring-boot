@@ -1,5 +1,6 @@
 package org.pmv.springboot.student;
 
+import com.fasterxml.jackson.annotation.JsonView;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.*;
@@ -19,12 +20,20 @@ public class StudentController {
      *
      * @return
      */
-    @GetMapping
-    public List<Student> getStudents(){
+
+    @JsonView(Views.External.class)
+    @GetMapping("/external")
+    public List<Student> getStudentsExternal(){
         //throw new ApiRequestException("Opps cannot get all students");
         return studentService.getStudents();
     }
 
+    @JsonView(Views.Internal.class)
+    @GetMapping("/internal")
+    public List<Student> getStudentsInternal(){
+        //throw new ApiRequestException("Opps cannot get all students");
+        return studentService.getStudents();
+    }
 
     /**
      *
