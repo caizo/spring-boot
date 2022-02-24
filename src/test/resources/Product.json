@@ -1,0 +1,10 @@
+{
+  "name": "Mocasines",
+  "description": "Unos zapatos muy incómodos",
+  "stock": 33,
+  "price": 15.6,
+  "category": {
+    "id": 1,
+    "name": "shoes"
+  }
+}
