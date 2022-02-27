@@ -70,10 +70,12 @@ class ProductServiceTest {
         Product capturedProduct = productArgumentCaptor.getValue();
         assertThat(capturedProduct).isEqualTo(product);
     }
+
     @Test
     void createProduct_without_createdAty_date_Test() {
-        // GIVEN: Dados los siguientes datos
-
+        /**
+         * GIVEN: Dados los siguientes datos
+         */
         Product product = Product.builder()
                 .id(333L)
                 .name("PRODUCT 1")
@@ -81,12 +83,16 @@ class ProductServiceTest {
                 .stock(10.0)
                 .category(Category.builder().id(1L).build())
                 .build();
-        // WHEN: Cuando se ejecute la siguiente acción
+        /**
+         * WHEN: Cuando se ejecuta la siguiente acción
+         */
         productService.createProduct(product);
 
-        // THEN: Entonces se hacen las comprobaciones.
-        // Compara que el producto que se pasa como argumento al servicio es el mismo que termina recibiendo el
-        // repository
+        /**
+         * THEN: Verificar comportamiento
+         * Verificar que la llamada a al servicio ejecuta el método 'save' del repositorio y que el
+         * objeto pasado como parámtro es igual en ambas capas
+         */
         ArgumentCaptor<Product> productArgumentCaptor = ArgumentCaptor.forClass(Product.class);
         verify(productRepository).save(productArgumentCaptor.capture());
         Product capturedProduct = productArgumentCaptor.getValue();
