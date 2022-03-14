@@ -1,6 +1,7 @@
 package org.pmv.springboot.bank;
 
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.math.BigDecimal;
 import java.util.Optional;
@@ -17,17 +18,20 @@ public class AccountServiceImpl implements AccountService{
     }
 
     @Override
+    @Transactional(readOnly = true)
     public Account findById(Long accountId) {
         return accountRepository.findById(accountId).orElseThrow();
     }
 
     @Override
+    @Transactional(readOnly = true)
     public int getTotalTransfers(Long bankId) {
         Bank bank = bankRepository.findById(bankId).orElseThrow();
         return bank.getTransfers();
     }
 
     @Override
+    @Transactional(readOnly = true)
     public BigDecimal viewBalance(Long accountId) {
         //Account account = accountRepository.findById(accountId);
         Optional<Account> account = accountRepository.findById(accountId);
@@ -35,6 +39,7 @@ public class AccountServiceImpl implements AccountService{
     }
 
     @Override
+    @Transactional()
     public void transfer(Long bankId, Long sourceAccount, Long destinationAccount, BigDecimal amount) {
         Bank bank = bankRepository.findById(bankId).orElseThrow();
         int transfers = bank.getTransfers();
