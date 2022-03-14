@@ -22,7 +22,6 @@ class ProductRepositoryTest {
     @Autowired
     private ProductRepository productRepository;
 
-
     @Test
     void find_all_products(){
         List<Product> result = productRepository.findAll();

@@ -2,10 +2,15 @@ package org.pmv.springboot.bank;
 
 import org.pmv.springboot.exceptions.InsufficientBalanceException;
 
+import javax.persistence.*;
 import java.math.BigDecimal;
 import java.util.Objects;
 
+@Entity
+@Table(name = "tbl_accounts")
 public class Account {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String holder;
     private BigDecimal balance;

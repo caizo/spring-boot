@@ -1,9 +1,8 @@
 package org.pmv.springboot.bank;
 
+import org.springframework.data.jpa.repository.JpaRepository;
+
 import java.util.List;
 
-public interface BankRepository {
-    Bank findById(Long id);
-    List<Bank> findAll();
-    void update(Bank bank);
+public interface BankRepository extends JpaRepository<Bank,Long> {
 }
