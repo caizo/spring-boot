@@ -10,7 +10,7 @@ import java.util.Objects;
 @Table(name = "tbl_accounts")
 public class Account {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String holder;
     private BigDecimal balance;

@@ -20,7 +20,7 @@ import java.time.Period;
 public class Student {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @JsonView(Views.Internal.class)
     private Long id;
     @NotNull(message = "{org.pmv.springboot.constraint.name.NotNull.message}")

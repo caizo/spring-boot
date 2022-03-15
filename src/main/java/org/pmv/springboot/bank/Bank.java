@@ -6,7 +6,7 @@ import javax.persistence.*;
 @Table(name = "tbl_banks")
 public class Bank {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String name;
     private int transfers;

@@ -14,14 +14,17 @@ import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Positive;
 import java.util.Date;
 
-@Entity
-@Table(name = "tbl_products")
 @Data
-@AllArgsConstructor @NoArgsConstructor @Builder
+@AllArgsConstructor
+@NoArgsConstructor
+@Builder
+@Entity
+//@Table(name = "tbl_products")
+@Table
 public class Product {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     @NotEmpty(message = "El nombre no puede ser vacio")
@@ -43,6 +46,7 @@ public class Product {
     @JoinColumn(name = "category_id")
     @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
     private Category category;
+
 
 
 }
