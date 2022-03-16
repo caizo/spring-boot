@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.time.LocalDate;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 @RestController
@@ -38,5 +39,17 @@ public class AccountController {
         response.put("transfer", dto);
 
         return ResponseEntity.ok(response);
+    }
+
+    @GetMapping
+    @ResponseStatus(HttpStatus.OK)
+    public List<Account> findAll(){
+        return accountService.findAll();
+    }
+
+    @PostMapping
+    @ResponseStatus(HttpStatus.CREATED)
+    public Account save(@RequestBody Account account){
+        return accountService.save(account);
     }
 }
