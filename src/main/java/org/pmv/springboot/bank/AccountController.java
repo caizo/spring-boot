@@ -10,6 +10,8 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import static org.springframework.http.HttpStatus.NO_CONTENT;
+
 @RestController
 @RequestMapping(value = "/api/accounts")
 public class AccountController {
@@ -51,5 +53,11 @@ public class AccountController {
     @ResponseStatus(HttpStatus.CREATED)
     public Account save(@RequestBody Account account){
         return accountService.save(account);
+    }
+
+    @DeleteMapping("/{id}")
+    @ResponseStatus(NO_CONTENT)
+    public void delete(@PathVariable Long id) {
+        accountService.deleteById(id);
     }
 }
