@@ -11,7 +11,7 @@ import java.util.List;
 @Configuration
 public class StudentConfig {
 
-    @Bean
+    @Bean("studentRunner")
     CommandLineRunner commandLineRunner(StudentRepository repository){
         return args -> {
             Student pablo = new Student("Pablo", "pmv@gmail.com", LocalDate.of(1983, Month.APRIL, 9));
