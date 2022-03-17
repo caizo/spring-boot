@@ -52,12 +52,11 @@ class AccountServiceImplTest {
         // THEN
         assertEquals("900", balanceAccount1.toPlainString());
         assertEquals("2100", balanceAccount2.toPlainString());
-        verify(bankRepository).save(any(Bank.class));
+        verify(bankRepository, times(2)).save(any(Bank.class));
         verify(accountRepository,times(3)).findById(1L);
         verify(accountRepository,times(3)).findById(2L);
         verify(accountRepository,times(2)).save(any(Account.class));
         verify(bankRepository, times(2)).findById(anyLong());
-
     }
 
     @Test
