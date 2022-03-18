@@ -20,6 +20,9 @@ import static org.junit.jupiter.api.Assertions.*;
 import static org.springframework.boot.test.context.SpringBootTest.WebEnvironment.RANDOM_PORT;
 import static org.hamcrest.Matchers.*;
 
+/**
+ * Test de integración de servicios Rest
+ */
 @TestMethodOrder(MethodOrderer.OrderAnnotation.class)
 @SpringBootTest(webEnvironment = RANDOM_PORT)
 class AccountControllerWebClientTest {

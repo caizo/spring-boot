@@ -9,6 +9,7 @@ import java.time.LocalDate;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.NoSuchElementException;
 
 import static org.springframework.http.HttpStatus.NO_CONTENT;
 
@@ -22,9 +23,15 @@ public class AccountController {
 
 
     @GetMapping("/{accountId}")
-    @ResponseStatus(HttpStatus.OK)
-    public Account findAccountById(@PathVariable(value = "accountId") Long accountId){
-        return accountService.findById(accountId);
+    //@ResponseStatus(HttpStatus.OK)
+    public ResponseEntity<Account> findAccountById(@PathVariable(value = "accountId") Long accountId){
+        Account account = null;
+        try {
+            account = accountService.findById(accountId);
+        } catch (NoSuchElementException e) {
+            return ResponseEntity.noContent().build();
+        }
+        return ResponseEntity.ok(account);
     }
 
 
