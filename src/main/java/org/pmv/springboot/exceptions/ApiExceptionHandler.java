@@ -19,10 +19,8 @@ import java.util.NoSuchElementException;
 /**
  * Use ErrorHandlerController instead
  */
-//@ControllerAdvice
+@ControllerAdvice
 public class ApiExceptionHandler {
-
-
 
     /**
      *

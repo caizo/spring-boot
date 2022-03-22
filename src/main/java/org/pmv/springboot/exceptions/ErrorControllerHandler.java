@@ -16,7 +16,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-@RestController
+//@RestController
 public class ErrorControllerHandler implements ErrorController {
 
     @Autowired
@@ -28,7 +28,7 @@ public class ErrorControllerHandler implements ErrorController {
      * @param request
      * @return
      */
-    @RequestMapping("/error")
+    //@RequestMapping("/error")
     public ApiException handleError(WebRequest request){
 
         Map<String, Object> errorAttributes = this.errorAttributes.getErrorAttributes(request,
@@ -38,7 +38,8 @@ public class ErrorControllerHandler implements ErrorController {
         String message = (String) errorAttributes.get("message");
         String path = (String) errorAttributes.get("path");
         Integer status = (Integer) errorAttributes.get("status");
-        ApiException apiException = new ApiException(message,HttpStatus.valueOf(status), ZonedDateTime.now(ZoneId.of("Z")),path);
+        ApiException apiException =
+                new ApiException(message,HttpStatus.valueOf(status), ZonedDateTime.now(ZoneId.of("Z")),path);
 
         if(errorAttributes.containsKey("errors")){
             Map<String,String> valErrors = new HashMap<>();

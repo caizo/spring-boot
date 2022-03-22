@@ -15,11 +15,11 @@ import java.util.Map;
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class ApiException {
     private String message;
-    //private final Throwable throwable;
     private HttpStatus httpStatus;
     private ZonedDateTime timestamp;
     private String path;
     private Map<String,String> validationErrors;
+    //private final Throwable throwable;
 
     public ApiException(String message, HttpStatus httpStatus, ZonedDateTime timestamp, String path) {
         this.message = message;

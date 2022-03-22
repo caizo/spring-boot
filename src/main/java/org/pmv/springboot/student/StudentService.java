@@ -1,10 +1,12 @@
 package org.pmv.springboot.student;
 
 import lombok.AllArgsConstructor;
+import org.pmv.springboot.exceptions.NotFoundException;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
 import java.util.List;
+import java.util.NoSuchElementException;
 import java.util.Objects;
 import java.util.Optional;
 
@@ -72,7 +74,10 @@ public class StudentService {
      * @return
      */
     public Student getStudentById(Long studentId) {
-        return studentRepository.findById(studentId).get();
+//        return studentRepository.findById(studentId).orElseThrow(
+//                () -> new NotFoundException("Sudent with ID: " + studentId + " NOT FOUND."));
+        return studentRepository.findById(studentId).orElseThrow(
+                () -> new NoSuchElementException("Sudent with ID: " + studentId + " NOT FOUND."));
     }
 
 

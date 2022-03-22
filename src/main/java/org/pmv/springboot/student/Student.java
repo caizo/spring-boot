@@ -30,7 +30,8 @@ public class Student {
     @JsonView(Views.External.class)
     private String name;
     @NotEmpty
-    @Email
+    // TODO create a 'uniqueEmail' annotation
+    @Email()
     @JsonView(Views.External.class)
     private String email;
     @Transient // no column needed in table
