@@ -1,6 +1,8 @@
 package org.pmv.springboot.bank;
 
 import org.junit.jupiter.api.Test;
+import org.pmv.springboot.account.Account;
+import org.pmv.springboot.account.AccountRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 

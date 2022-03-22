@@ -1,4 +1,4 @@
-package org.pmv.springboot.bank;
+package org.pmv.springboot.account;
 
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.context.annotation.Bean;

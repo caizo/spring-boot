@@ -1,5 +1,6 @@
-package org.pmv.springboot.bank;
+package org.pmv.springboot.account;
 
+import org.pmv.springboot.bank.TransferDto;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

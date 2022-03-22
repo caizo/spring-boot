@@ -1,4 +1,4 @@
-package org.pmv.springboot.bank;
+package org.pmv.springboot.account;
 
 import java.math.BigDecimal;
 import java.util.List;

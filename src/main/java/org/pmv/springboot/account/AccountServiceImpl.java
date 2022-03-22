@@ -1,5 +1,7 @@
-package org.pmv.springboot.bank;
+package org.pmv.springboot.account;
 
+import org.pmv.springboot.bank.Bank;
+import org.pmv.springboot.bank.BankRepository;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 

@@ -1,4 +1,4 @@
-package org.pmv.springboot.bank;
+package org.pmv.springboot.account;
 
 import org.pmv.springboot.exceptions.InsufficientBalanceException;
 

@@ -64,9 +64,6 @@ public class StudentService {
                 student.setEmail(email);
             }
         }
-
-
-
     }
 
     /**
@@ -76,5 +73,14 @@ public class StudentService {
      */
     public Student getStudentById(Long studentId) {
         return studentRepository.findById(studentId).get();
+    }
+
+
+    /**
+     *
+     * @param student
+     */
+    public void updateStudent(Student student) {
+        studentRepository.save(student);
     }
 }

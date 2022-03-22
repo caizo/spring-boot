@@ -3,8 +3,10 @@ package org.pmv.springboot.bank;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
+import org.pmv.springboot.account.Account;
+import org.pmv.springboot.account.AccountController;
+import org.pmv.springboot.account.AccountService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
@@ -35,7 +37,8 @@ class AccountControllerTest {
     @Autowired
     private MockMvc mvc;
 
-    @MockBean AccountService accountService;
+    @MockBean
+    AccountService accountService;
 
     ObjectMapper objectMapper;
 

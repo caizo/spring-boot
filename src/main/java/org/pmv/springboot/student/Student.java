@@ -1,5 +1,7 @@
 package org.pmv.springboot.student;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonView;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -12,7 +14,7 @@ import java.time.Period;
 
 
 
-@Data
+
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
@@ -38,6 +40,10 @@ public class Student {
     @JsonView(Views.External.class)
     private LocalDate dob;
 
+    @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
+    private String password;
+
+
     public Student(String name, String email, LocalDate dob) {
         this.name = name;
         this.email = email;
@@ -47,5 +53,35 @@ public class Student {
 
     public Integer getAge() {
         return Period.between(this.dob,LocalDate.now()).getYears();
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public LocalDate getDob() {
+        return dob;
+    }
+
+    @JsonIgnore
+    public String getPassword() {
+        return password;
+    }
+
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
     }
 }
