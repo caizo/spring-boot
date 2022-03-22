@@ -11,9 +11,8 @@ import java.util.List;
 @Slf4j
 @AllArgsConstructor
 @RestController
-@RequestMapping(path = "api/v1/student")
-//@Deprecated
-public class StudentController {
+@RequestMapping(path = "api/v2/student")
+public class StudentControllerV2 {
 
     private final StudentService studentService;
 
