@@ -2,6 +2,8 @@ package org.pmv.springboot.student;
 
 import lombok.AllArgsConstructor;
 import org.pmv.springboot.exceptions.NotFoundException;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
@@ -14,9 +16,12 @@ import java.util.Optional;
 @Service
 public class StudentService {
 
+    private final static Logger LOGGER = LoggerFactory.getLogger(StudentService.class);
+
     private final StudentRepository studentRepository;
 
     public List<Student> getStudents(){
+        LOGGER.info("getStudents was called");
         return studentRepository.findAll();
     }
 
@@ -77,7 +82,14 @@ public class StudentService {
 //        return studentRepository.findById(studentId).orElseThrow(
 //                () -> new NotFoundException("Sudent with ID: " + studentId + " NOT FOUND."));
         return studentRepository.findById(studentId).orElseThrow(
-                () -> new NoSuchElementException("Sudent with ID: " + studentId + " NOT FOUND."));
+                () -> {
+                    NoSuchElementException exception =
+                            new NoSuchElementException("Sudent with ID: " + studentId + " NOT FOUND.");
+                    LOGGER.error("Error in getStudentById: {}",studentId, exception);
+
+                    return exception;
+                });
+                
     }
 
 
