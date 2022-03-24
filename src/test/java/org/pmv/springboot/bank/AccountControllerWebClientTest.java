@@ -24,8 +24,8 @@ import static org.hamcrest.Matchers.*;
 /**
  * Test de integración de servicios Rest
  */
-@TestMethodOrder(MethodOrderer.OrderAnnotation.class)
-@SpringBootTest(webEnvironment = RANDOM_PORT)
+//@DisabledMethodOrder(MethodOrderer.OrderAnnotation.class)
+//@SpringBootTest(webEnvironment = RANDOM_PORT)
 class AccountControllerWebClientTest {
 
     private ObjectMapper objectMapper;
@@ -38,7 +38,7 @@ class AccountControllerWebClientTest {
         objectMapper = new ObjectMapper();
     }
 
-    @Test
+    @Disabled
     @Order(1)
     void transfer_test() throws JsonProcessingException {
         // GIVEN
@@ -84,7 +84,7 @@ class AccountControllerWebClientTest {
 
     }
 
-    @Test
+    @Disabled
     @Order(2)
     void account_details_test() throws JsonProcessingException {
         Account cuenta = new Account(1L, "Juan", new BigDecimal("900"));
@@ -97,7 +97,7 @@ class AccountControllerWebClientTest {
             .json(objectMapper.writeValueAsString(cuenta));
     }
 
-    @Test
+    @Disabled
     @Order(3)
     void account_details_test_2() {
         client.get().uri("/api/accounts/2").exchange()
@@ -112,7 +112,7 @@ class AccountControllerWebClientTest {
                 });
     }
 
-    @Test
+    @Disabled
     @Order(4)
     void find_all_test() {
         client.get().uri("/api/accounts").exchange()
@@ -129,7 +129,7 @@ class AccountControllerWebClientTest {
                 .jsonPath("$").value(hasSize(2));
     }
 
-    @Test
+    @Disabled
     @Order(5)
     void find_all_test_2() {
         client.get().uri("/api/accounts").exchange()
@@ -151,7 +151,7 @@ class AccountControllerWebClientTest {
                 .value(hasSize(2));
     }
 
-    @Test
+    @Disabled
     @Order(6)
     void save_test() {
         // given
@@ -172,7 +172,7 @@ class AccountControllerWebClientTest {
                 .jsonPath("$.balance").isEqualTo(3000);
     }
 
-    @Test
+    @Disabled
     @Order(7)
     void save_test_2() {
         // given
@@ -196,7 +196,7 @@ class AccountControllerWebClientTest {
                 });
     }
 
-    @Test
+    @Disabled
     @Order(8)
     void testEliminar() {
         client.get().uri("/api/accounts").exchange()

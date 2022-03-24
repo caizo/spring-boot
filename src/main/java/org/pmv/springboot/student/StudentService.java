@@ -1,6 +1,7 @@
 package org.pmv.springboot.student;
 
 import lombok.AllArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.pmv.springboot.exceptions.NotFoundException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -13,15 +14,14 @@ import java.util.Objects;
 import java.util.Optional;
 
 @AllArgsConstructor
+@Slf4j
 @Service
 public class StudentService {
-
-    private final static Logger LOGGER = LoggerFactory.getLogger(StudentService.class);
 
     private final StudentRepository studentRepository;
 
     public List<Student> getStudents(){
-        LOGGER.info("getStudents was called");
+        log.info("getStudents was called");
         return studentRepository.findAll();
     }
 
@@ -85,7 +85,7 @@ public class StudentService {
                 () -> {
                     NoSuchElementException exception =
                             new NoSuchElementException("Sudent with ID: " + studentId + " NOT FOUND.");
-                    LOGGER.error("Error in getStudentById: {}",studentId, exception);
+                    log.error("Error in getStudentById: {}",studentId, exception);
 
                     return exception;
                 });

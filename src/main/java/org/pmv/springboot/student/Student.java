@@ -4,19 +4,20 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonView;
 import lombok.AllArgsConstructor;
-import lombok.Data;
 import lombok.NoArgsConstructor;
+import lombok.ToString;
+import org.hibernate.Hibernate;
 
 import javax.persistence.*;
 import javax.validation.constraints.*;
 import java.time.LocalDate;
 import java.time.Period;
-
-
+import java.util.Objects;
 
 
 @AllArgsConstructor
 @NoArgsConstructor
+@ToString
 @Entity
 @Table
 public class Student {
@@ -84,5 +85,18 @@ public class Student {
 
     public void setEmail(String email) {
         this.email = email;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || Hibernate.getClass(this) != Hibernate.getClass(o)) return false;
+        Student student = (Student) o;
+        return id != null && Objects.equals(id, student.id);
+    }
+
+    @Override
+    public int hashCode() {
+        return getClass().hashCode();
     }
 }
